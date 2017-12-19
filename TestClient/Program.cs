@@ -17,7 +17,7 @@ namespace TestClient
             dynamic token = null;
             while (true)
             {
-                Console.WriteLine("1、登录【admin】 2、登录【system】 3、登录【错误用户名密码】 4、查询HisUser数据  5、查询LisUser数据 ");
+                Console.WriteLine("1、登录[admin] 2、登录[system] 3、登录[错误用户名密码] 4、查询HisUser数据  5、查询LisUser数据 ");
                 var mark = Console.ReadLine();
                 var stopwatch = new Stopwatch();
                 stopwatch.Start();
