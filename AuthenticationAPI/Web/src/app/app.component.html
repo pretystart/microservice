@@ -3,31 +3,24 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <form>
+  <!--<form>-->
     <mat-form-field>
-      <input type="text" matInput placeholder="username" value="">
+      <input type="text" matInput placeholder="username" [ngModel]="username" value="{{ username }}">
     </mat-form-field>
 
     <mat-form-field>
-      <input type="password" matInput placeholder="password">
+      <input type="password" matInput placeholder="password" [ngModel]="password" value="{{ password }}">
     </mat-form-field>
 
-    <mat-form-field>
-      <button mat-button ng-click="login()">login</button>
-    </mat-form-field>
-  </form>
 
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+    <button mat-button (click)="login()">login</button>
+
+
+  <!--</form>-->
+  {{ message }}
+--></div>
+<a>Here are some links to help you start: </a><br />
+<a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a><br />
+<a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a><br />
+<a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a> <br />
 

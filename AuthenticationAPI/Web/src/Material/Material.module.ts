@@ -1,16 +1,30 @@
+import '../polyfills';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { CdkTableModule } from '@angular/cdk/table';
+import { HttpClientModule } from '@angular/common/http';
+import 'hammerjs';
 import {
-  MatButtonModule,
-  MatCheckboxModule,
   MatAutocompleteModule,
+  MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
+  MatCheckboxModule,
   MatChipsModule,
+  MatDatepickerModule,
   MatDialogModule,
+  MatExpansionModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
   MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
   MatRadioModule,
@@ -20,32 +34,34 @@ import {
   MatSliderModule,
   MatSlideToggleModule,
   MatSnackBarModule,
+  MatSortModule,
+  MatTableModule,
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatDatepickerModule,
-  MatFormFieldModule,
-  MatStepperModule,
-  MatExpansionModule,
-  MatTableModule,
-  MatSortModule,
-  MatPaginatorModule } from '@angular/material';
-
-import { NgModule } from '@angular/core';
+  MatStepperModule
+} from '@angular/material';
 
 @NgModule({
-  imports: [MatButtonModule,
-    MatCheckboxModule,
+  exports: [
+    CdkTableModule,
     MatAutocompleteModule,
+    MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
+    MatCheckboxModule,
     MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
     MatDialogModule,
+    MatExpansionModule,
     MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatListModule,
     MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatRadioModule,
@@ -55,47 +71,16 @@ import { NgModule } from '@angular/core';
     MatSliderModule,
     MatSlideToggleModule,
     MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatStepperModule,
-    MatExpansionModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule],
-
-  exports: [MatButtonModule,
-    MatCheckboxModule,
-    MatAutocompleteModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatChipsModule,
-    MatDialogModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatStepperModule,
-    MatExpansionModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule ],
+    BrowserAnimationsModule,
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ]
 })
 export class MaterialModule { }

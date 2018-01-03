@@ -1,1 +1,7 @@
+Release management website:
+
 1. user login -> can access api
+big release (from to)
+  --small release (from to)
+	  title, feature section, feature 
+  --

@@ -72,27 +72,27 @@
       "AuthenticationOptions": {
       }
     },
+    //{
+    //  "DownstreamPathTemplate": "/authapi/login",
+    //  "DownstreamScheme": "http",
+    //  "DownstreamPort": 5003,
+    //  "DownstreamHost": "localhost",
+    //  "UpstreamPathTemplate": "/authapi/login",
+    //  "UpstreamHttpMethod": [ "Get", "Post" ],
+    //  "QoSOptions": {
+    //    "ExceptionsAllowedBeforeBreaking": 3,
+    //    "DurationOfBreak": 10,
+    //    "TimeoutValue": 5000
+    //  },
+    //  "AuthenticationOptions": {
+    //  }
+    //},
     {
-      "DownstreamPathTemplate": "/authapi/login",
+      "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "DownstreamPort": 5003,
       "DownstreamHost": "localhost",
-      "UpstreamPathTemplate": "/authapi/login",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
-      "QoSOptions": {
-        "ExceptionsAllowedBeforeBreaking": 3,
-        "DurationOfBreak": 10,
-        "TimeoutValue": 5000
-      },
-      "AuthenticationOptions": {
-      }
-    },
-    {
-      "DownstreamPathTemplate": "/account/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamPort": 5003,
-      "DownstreamHost": "localhost",
-      "UpstreamPathTemplate": "/account/{everything}",
+      "UpstreamPathTemplate": "/users/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "QoSOptions": {
         "ExceptionsAllowedBeforeBreaking": 3,
