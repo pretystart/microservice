@@ -3,12 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../Material/Material.module'
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import 'hammerjs';
-import { UserService } from './user.service';
-
-
+import { AuthenticationService } from './user.AuthenticationService';
+import { AuthInterceptor } from './AuthInterceptor';
+import { RouterModule, Router } from '@angular/router';
+//import { AppRoutingModule } from './AppRouting'
 
 @NgModule({
   declarations: [
@@ -19,9 +20,15 @@ import { UserService } from './user.service';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    RouterModule,
+    //AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [AuthenticationService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

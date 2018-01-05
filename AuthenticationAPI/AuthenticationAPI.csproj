@@ -24,6 +24,8 @@
     <None Remove="Certificate\idsrv3test.pfx" />
     <None Remove="Setup\images.zip" />
     <None Remove="Setup\Users.csv" />
+    <None Remove="Web\src\app\AppRouting.ts" />
+    <None Remove="Web\src\AuthInterceptor.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -106,6 +108,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ocelot.JWTAuthorizePolicy\Ocelot.JWTAuthorizePolicy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Web\src\app\AuthInterceptor.ts" />
+    <TypeScriptCompile Include="Web\src\app\AppRouting.ts" />
   </ItemGroup>
 
 </Project>

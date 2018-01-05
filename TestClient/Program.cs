@@ -49,7 +49,7 @@ namespace TestClient
         static dynamic NullLogin()
         {
             var loginClient = new RestClient(_url);
-            var loginRequest = new RestRequest("/authapi/login", Method.POST);
+            var loginRequest = new RestRequest("/users/authapi/login", Method.POST);
             loginRequest.AddParameter("username", "demouser@microsoft.com");
             loginRequest.AddParameter("password", "Pass@word1");
             //或用用户名密码查询对应角色
