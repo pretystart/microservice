@@ -37,11 +37,11 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/demobapi/values",
+      "DownstreamPathTemplate": "/demobapi/{everything}",
       "DownstreamScheme": "http",
       "DownstreamPort": 5002,
       "DownstreamHost": "localhost",
-      "UpstreamPathTemplate": "/demobapi/values",
+      "UpstreamPathTemplate": "/demobapi/{everything}",
       "UpstreamHttpMethod": [ "Get" ],
       "QoSOptions": {
         "ExceptionsAllowedBeforeBreaking": 3,

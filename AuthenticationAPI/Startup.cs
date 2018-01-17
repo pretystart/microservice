@@ -36,8 +36,10 @@ namespace AuthenticationAPI
         public IConfiguration Configuration { get; }
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(connectionString)
+            );
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -54,7 +56,7 @@ namespace AuthenticationAPI
             services.AddTransient<ILoginService<ApplicationUser>, EFLoginService>();
             services.AddTransient<IRedirectService, RedirectService>();
 
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
             var cred = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII.GetBytes(audienceConfig["Secret"])), SecurityAlgorithms.HmacSha256);
             // Adds IdentityServer
@@ -121,9 +123,10 @@ namespace AuthenticationAPI
                 context.Response.Headers.Add("Content-Security-Policy", "script-src 'unsafe-inline'");
                 await next();
             });
-
-            app.UseIdentity();
-
+            
+            app.UseAuthentication();
+            // Store idsrv grant config into db
+            InitializeGrantStoreAndConfiguration(app).Wait();
             // Adds IdentityServer
             app.UseIdentityServer();
 
@@ -134,8 +137,7 @@ namespace AuthenticationAPI
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            // Store idsrv grant config into db
-            InitializeGrantStoreAndConfiguration(app).Wait();
+
 
             //Seed Data
             var hasher = new PasswordHasher<ApplicationUser>();

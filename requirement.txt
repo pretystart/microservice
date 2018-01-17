@@ -1,7 +1,19 @@
+﻿登陆 -> consul UI
+注册
+管理用户
+
+
+
 Release management website:
 
-1. user login -> can access api
-big release (from to)
+1. user login -> is admin?
+create 
+  --big release (from to)
   --small release (from to)
 	  title, feature section, feature 
   --
+=============
+
+
+Things to learn:
+Authentication

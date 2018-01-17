@@ -1,6 +1,8 @@
 ﻿using RestSharp;
 using System;
 using System.Diagnostics;
+using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 
 namespace TestClient
 {
@@ -38,6 +40,8 @@ namespace TestClient
                     case "5":
                         DemoBAPI(token);
                         break;
+                    case "6":
+                        break;
                 }
                 stopwatch.Stop();
                 TimeSpan timespan = stopwatch.Elapsed;
@@ -45,6 +49,7 @@ namespace TestClient
                 tokenString = "Bearer " + Convert.ToString(token?.access_token);
             }
         }
+        
         static string tokenString = "";
         static dynamic NullLogin()
         {

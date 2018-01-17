@@ -20,13 +20,44 @@ export class AppComponent {
   title = 'app';
   username = 'demouser@microsoft.com';
   password = 'Pass@word1';
+  keys: any;
+  value: any;
   
   login() {
     this.userservice.login(this.username, this.password);
-    this.http.get('/demobapi/values').subscribe(
+  }
+  getkeys() {
+    this.http.get<any>('/demobapi/keys').subscribe(
       (response) => {
-        console.log(response);
+        console.log("response");
+        //console.log(typeof response);
+        //console.log(response);
+        //var arr = JSON.parse(response[0])
+        this.keys = JSON.parse(response[0]);
+        //var keysjson = JSON.parse(response.body);
+        //console.log("body");
+        //console.log(keysjson);
+
+        //console.log("keys");
+        //this.keys = response;
+        //console.log(typeof this.keys);
         //this._router.navigate(['home']);
+      },
+      (error) => {
+        console.log(error.text());
+      }
+    )
+  }
+
+
+  getvalue(key: string) {
+    console.log("get value for key:"+key);
+    this.http.get<any>('/demobapi/value?'+key).subscribe(
+      (response) => {
+        console.log("response");
+
+        this.value = JSON.parse(response[0]);
+
       },
       (error) => {
         console.log(error.text());

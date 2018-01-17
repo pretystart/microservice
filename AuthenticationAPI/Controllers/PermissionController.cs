@@ -99,6 +99,63 @@ namespace AuthenticationAPI
                     Message = "认证失败"
                 });
             }
-        }       
+        }
+
+        [HttpPost("/authapi/register")]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    CardHolderName = model.User.CardHolderName,
+                    CardNumber = model.User.CardNumber,
+                    CardType = model.User.CardType,
+                    City = model.User.City,
+                    Country = model.User.Country,
+                    Expiration = model.User.Expiration,
+                    LastName = model.User.LastName,
+                    Name = model.User.Name,
+                    Street = model.User.Street,
+                    State = model.User.State,
+                    ZipCode = model.User.ZipCode,
+                    PhoneNumber = model.User.PhoneNumber,
+                    SecurityNumber = model.User.SecurityNumber
+                };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Errors.Count() > 0)
+                {
+                    AddErrors(result);
+                    // If we got this far, something failed, redisplay form
+                    return View(model);
+                }
+            }
+
+            if (returnUrl != null)
+            {
+                if (HttpContext.User.Identity.IsAuthenticated)
+                    return Redirect(returnUrl);
+                else
+                    if (ModelState.IsValid)
+                    return RedirectToAction("login", "account", new { returnUrl = returnUrl });
+                else
+                    return View(model);
+            }
+
+            return RedirectToAction("index", "home");
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+        }
     }
 }

@@ -20,7 +20,7 @@ export class AuthenticationService {
     //this._router.navigate(['login']);
   }
 
-   public login(username, password) {
+  public login(username, password) {
      //event.preventDefault();
      //let body = JSON.stringify({ username, password });
      let body = "";
@@ -51,5 +51,9 @@ export class AuthenticationService {
     } else {
       return localStorage.getItem('access_token');
     }
+  }
+
+  public register() {
+
   }
 }

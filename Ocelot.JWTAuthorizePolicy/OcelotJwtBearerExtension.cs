@@ -44,7 +44,7 @@ namespace Ocelot.JWTAuthorizePolicy
             {
                 options.DefaultScheme = defaultScheme;
             })
-            .AddCookie(cfg => cfg.SlidingExpiration = true)
+            //.AddCookie(cfg => cfg.SlidingExpiration = true)
              .AddJwtBearer(defaultScheme, opt =>
              {
                  //不使用https
@@ -106,7 +106,7 @@ namespace Ocelot.JWTAuthorizePolicy
          {
              options.DefaultScheme = defaultScheme;
          })
-         .AddCookie(cfg => cfg.SlidingExpiration = true)
+         //.AddCookie(cfg => cfg.SlidingExpiration = true)
          .AddJwtBearer(defaultScheme, o =>
          {
              //不使用https
